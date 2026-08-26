@@ -1,0 +1,47 @@
+---
+import "@fontsource-variable/geologica";
+import "@fontsource-variable/open-sans";
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  /** Page title; suffixed with "| Harborview Law" unless absoluteTitle is set. */
+  title?: string;
+  /** Full title used verbatim (for pages whose live SEO title doesn't follow the suffix pattern). */
+  absoluteTitle?: string;
+  description: string;
+  ogImage?: string;
+}
+
+// Live homepage title, kept verbatim for SEO continuity.
+const DEFAULT_TITLE = "Outside General Counsel Newport Beach | Harborview Law";
+
+const { title, absoluteTitle, description, ogImage = "/images/sailboat_on_newport_harbor.jpg" } = Astro.props;
+const fullTitle = absoluteTitle ?? (title ? `${title} | Harborview Law` : DEFAULT_TITLE);
+const ogImageUrl = new URL(ogImage, Astro.site);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/jpeg" href="/images/Favicon.jpg" />
+    <link rel="apple-touch-icon" href="/images/Web-Clip.jpg" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Harborview Law" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageUrl} />
+  </head>
+  <body>
+    <Nav />
+    <main><slot /></main>
+    <Footer />
+  </body>
+</html>

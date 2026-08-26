@@ -1,0 +1,28 @@
+---
+import { TESTIMONIALS, type Testimonial } from "../data/site";
+
+interface Props {
+  count?: number;
+  items?: Testimonial[];
+}
+
+const { count = 3, items = TESTIMONIALS } = Astro.props;
+const shown = items.slice(0, count);
+---
+
+<div class="testimonial-grid">
+  {
+    shown.map((t) => (
+      <figure class="testimonial">
+        <blockquote class="testimonial__text">“{t.text}”</blockquote>
+        <figcaption class="testimonial__who">
+          {t.photo && <img src={t.photo} alt={t.name} width="48" height="48" loading="lazy" />}
+          <div>
+            <div class="testimonial__name">{t.name}</div>
+            <div class="testimonial__role">{t.role}</div>
+          </div>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>

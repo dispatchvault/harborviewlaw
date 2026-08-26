@@ -1,0 +1,171 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import Faq from "../components/Faq.astro";
+import Testimonials from "../components/Testimonials.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import CtaBand from "../components/CtaBand.astro";
+import ContactForm from "../components/ContactForm";
+import { FAQS, PHONE, PHONE_HREF, EMAIL, ADDRESS_LINES } from "../data/site";
+
+const practices = (await getCollection("practiceAreas")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const latest = (await getCollection("news"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<Base
+  description="Harborview Law provides outside general counsel and concierge legal solutions for Newport Beach businesses — corporate law, real estate, commercial contracts, and telecommunications."
+>
+  <section class="hero pad-global">
+    <div class="container hero__grid">
+      <div>
+        <h1 class="h1">Harborview Law Provides Concierge Legal Solutions for Your Business</h1>
+        <p class="lede muted">
+          With over 25 years of experience, Harborview Law offers personalized, on-demand legal
+          support in corporate law, risk management, and contract negotiation to drive business
+          success.
+        </p>
+        <div class="btn-group">
+          <a href="/contact-us" class="btn">Get in touch</a>
+          <a href="/practice-areas" class="btn btn--secondary">Learn More</a>
+        </div>
+      </div>
+      <div class="hero__art">
+        <img
+          src="/images/jg_isolated_arms-folded_cropped_original.png"
+          alt="Jim Grass, founder of Harborview Law"
+          width="640"
+          height="720"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Overview"
+        lede="Acting as your dedicated outside general counsel, we deliver expert strategic guidance across corporate law, real estate transactions, telecommunications, and complex commercial contracts. Our proactive approach focuses on risk management and regulatory compliance, ensuring that your business is not only legally protected but also positioned for long-term growth and success."
+      >
+        Personalized, On-Demand Legal Support
+      </SectionHeader>
+    </div>
+  </section>
+
+  <section class="section pad-global scheme-cool">
+    <div class="container">
+      <SectionHeader eyebrow="Practice areas">
+        What Legal Services Does Harborview Law Provide?
+      </SectionHeader>
+      <div class="card-grid card-grid--3">
+        {
+          practices.map((p) => (
+            <a class="card card--hover" href={`/practice-area/${p.id}`} style="text-decoration:none;color:inherit;">
+              <h3 class="card__title">{p.data.title}</h3>
+              <p class="card__body">{p.data.lede}</p>
+              <span class="card__link">Learn more</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global on-navy">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">About us</span>
+        <h2 class="h2">How Does Harborview Law Tailor Legal Support for Your Business?</h2>
+        <p class="lede muted">
+          Harborview Law provides practical, business-minded legal support for companies, property
+          owners, entrepreneurs, and executives.
+        </p>
+        <ul class="checklist">
+          <li>Strategic guidance for corporate law, real estate, telecommunications, and commercial contracts</li>
+          <li>Risk management and regulatory compliance support</li>
+          <li>Proactive legal counsel designed to help business owners move forward with confidence</li>
+        </ul>
+        <div class="btn-group" style="margin-top: 2rem;">
+          <a href="/about" class="btn btn--on-navy">About Us</a>
+          <a href="/practice-areas" class="btn btn--ghost-on-navy">Browse Services</a>
+        </div>
+      </div>
+      <div class="split__img">
+        <img src="/images/people-gathered-in-conference-room.jpg" alt="Meeting at Harborview Law" width="720" height="612" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container">
+      <SectionHeader
+        eyebrow="News and Insights"
+        lede="Stay informed with the latest legal trends and industry developments to keep your business ahead."
+      >
+        Legal Updates and Industry Insights
+      </SectionHeader>
+      <div class="article-grid">
+        {latest.map((a) => <ArticleCard slug={a.id} {...a.data} />)}
+      </div>
+      <div class="btn-group" style="margin-top: 2.5rem;">
+        <a href="/news-and-insight" class="btn btn--secondary">View all</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global scheme-grey">
+    <div class="container faq-layout">
+      <SectionHeader
+        eyebrow="FAQ"
+        lede="Answers to the questions businesses ask us most."
+      >
+        Frequently Asked Questions
+      </SectionHeader>
+      <Faq items={FAQS} />
+    </div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container">
+      <SectionHeader eyebrow="Client Testimonials" center
+        >What Our Clients Say</SectionHeader
+      >
+      <Testimonials count={3} />
+    </div>
+  </section>
+
+  <section class="section pad-global scheme-cool">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <div>
+          <div class="contact-info__label">Office</div>
+          <p>{ADDRESS_LINES.map((l) => <span>{l}<br /></span>)}</p>
+        </div>
+        <div>
+          <div class="contact-info__label">Phone</div>
+          <a href={PHONE_HREF}>{PHONE}</a>
+        </div>
+        <div>
+          <div class="contact-info__label">Email</div>
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        </div>
+        <p class="contact-info__note">
+          Our offices are conveniently located for personalized legal support and guidance.
+        </p>
+      </div>
+      <div class="contact-form">
+        <h2 class="h3" style="margin-bottom: 0.75rem;">Contact Us Today</h2>
+        <p class="muted" style="margin-bottom: 1.75rem;">
+          Get in touch with us today to discuss how our legal expertise can support and protect
+          your business.
+        </p>
+        <ContactForm client:visible />
+      </div>
+    </div>
+  </section>
+</Base>

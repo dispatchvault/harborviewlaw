@@ -1,0 +1,119 @@
+---
+import Base from "../layouts/Base.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const pillars = [
+  { t: "Legal Expertise", d: "Highly experienced and dedicated legal professionals committed to delivering exceptional service for our clients." },
+  { t: "Client-First Approach", d: "We prioritise your needs and collaborate to understand your goals, ensuring that every decision is focused on your success." },
+  { t: "Flexible Billing Solutions", d: "We offer flexible billing options, including monthly retainers, flat fees and hourly rates, designed to suit your budget and ensure transparent, cost-effective legal services for your business needs." },
+  { t: "Making a Difference", d: "Harborview Law actively participates in community initiatives, volunteering, and supporting causes that positively impact the lives of others." },
+];
+
+const stats = [
+  { num: "25 years", label: "Providing expert legal services for clients" },
+  { num: "$1 Million+", label: "Litigation fees saved through negotiated settlement agreements" },
+  { num: "1000+", label: "Negotiated commercial agreements" },
+  { num: "20%", label: "Reduction in clients' legal expenses via efficient legal management" },
+];
+
+const values = [
+  { t: "Integrity", d: "Upholding the highest ethical standards, we foster trust and transparency, ensuring our clients receive honest and reliable legal counsel." },
+  { t: "Excellence", d: "Committed to delivering exceptional service, we strive for excellence in all aspects, providing our clients with top-tier legal expertise and solutions." },
+  { t: "Client-Centric Approach", d: "Our clients' success is at the forefront of everything we do. We prioritise their needs, providing tailored legal strategies to help them thrive." },
+];
+---
+
+<Base
+  title="About"
+  description="Harborview Law provides trusted legal solutions for businesses — over 25 years of expertise, a client-first approach, and flexible billing built around your needs."
+  ogImage="/images/abstract-boat-sails.jpg"
+>
+  <section class="page-hero pad-global">
+    <div class="container"><div class="page-hero__inner">
+      <span class="eyebrow">About Harborview Law</span>
+      <h1 class="h1">Providing Trusted Legal Solutions for Businesses</h1>
+      <p class="lede muted">
+        We offer reliable legal solutions designed to your business needs. Our expertise ensures
+        your business is protected and positioned for growth in a dynamic legal landscape.
+      </p>
+    </div></div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container">
+      <div class="card-grid card-grid--4">
+        {
+          pillars.map((p) => (
+            <div class="card">
+              <h3 class="card__title">{p.t}</h3>
+              <p class="card__body">{p.d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global scheme-cool">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Our vision</span>
+        <h2 class="h2">Delivering Expert Legal Solutions Since 1998</h2>
+        <p class="lede muted">
+          We provide expert legal solutions to help businesses navigate legal challenges with
+          ease. Whether handling complex contracts or advising on corporate matters, our focus
+          has delivered practical, results-oriented guidance for our clients.
+        </p>
+      </div>
+      <div class="split__img">
+        <img src="/images/abstract-boat-sails.jpg" alt="Sailboats near Newport Harbor" width="720" height="612" loading="lazy" />
+      </div>
+    </div>
+    <div class="container" style="margin-top: 4rem;">
+      <div class="stat-band__grid">
+        {
+          stats.map((s) => (
+            <div class="stat-card">
+              <div class="stat-card__label">{s.label}</div>
+              <div class="stat-card__num">{s.num}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Our values"
+        lede="Our guiding principles—integrity, excellence, and a client-centric approach—drive us to deliver exceptional legal services. We prioritize your business needs, offering trusted guidance and customized strategies for long-term success."
+      >
+        Guiding Principles for Exceptional Legal Services
+      </SectionHeader>
+      <div class="card-grid card-grid--3">
+        {
+          values.map((v) => (
+            <div class="card">
+              <h3 class="card__title">{v.t}</h3>
+              <p class="card__body">{v.d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global scheme-grey">
+    <div class="container">
+      <SectionHeader eyebrow="Client Testimonials" center
+        >Hear From Our Clients</SectionHeader
+      >
+      <Testimonials count={4} />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

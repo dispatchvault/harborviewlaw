@@ -1,0 +1,26 @@
+---
+interface Props {
+  lede?: string;
+  label?: string;
+  href?: string;
+}
+
+const {
+  lede = "Get in touch with us today to discuss how our legal expertise can support and protect your business.",
+  label = "Get in Touch",
+  href = "/contact-us",
+} = Astro.props;
+---
+
+<section class="cta-band pad-global section">
+  <div class="container cta-band__inner">
+    <div>
+      <span class="eyebrow" style="margin-bottom: 1rem;">Get in touch</span>
+      <h2 class="h3">
+        <slot>Contact Us Today</slot>
+      </h2>
+      <p class="lede muted">{lede}</p>
+    </div>
+    <a href={href} class="btn">{label}</a>
+  </div>
+</section>

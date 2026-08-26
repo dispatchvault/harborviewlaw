@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const policies = await getCollection("policies");
+  return policies.map((p) => ({ params: { slug: p.id }, props: { entry: p } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Base title={entry.data.title} description={entry.data.lede}>
+  <section class="page-hero pad-global">
+    <div class="container"><div class="page-hero__inner">
+      <h1 class="h1">{entry.data.title}</h1>
+      <p class="lede muted">{entry.data.lede}</p>
+    </div></div>
+  </section>
+  <div class="pad-global" style="padding-top: 3rem;">
+    <div class="prose">
+      <Content />
+    </div>
+  </div>
+</Base>

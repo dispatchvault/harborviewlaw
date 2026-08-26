@@ -1,0 +1,54 @@
+---
+// Mirrors the live site's nav: About, Profile, Practice Areas, News & Insights,
+// Contact, plus the "Free Consultation" CTA button.
+const links = [
+  { href: "/about", label: "About" },
+  { href: "/profile", label: "Profile" },
+  { href: "/practice-areas", label: "Practice Areas" },
+  { href: "/news-and-insight", label: "News & Insights" },
+  { href: "/contact-us", label: "Contact" },
+];
+
+const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
+---
+
+<header class="nav pad-global">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Harborview Law home">
+      <img src="/images/logo-hvl.svg" alt="Harborview Law" width="180" height="42" />
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      {
+        links.map((l) => (
+          <a href={l.href} class={`nav__link${pathname === l.href ? " nav__link--active" : ""}`}>
+            {l.label}
+          </a>
+        ))
+      }
+      <a href="/free-consultation" class="btn btn--small nav__cta">Free Consultation</a>
+    </nav>
+    <button class="nav__toggle" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>(".nav");
+  const toggle = header?.querySelector<HTMLButtonElement>(".nav__toggle");
+  const linksEl = header?.querySelector<HTMLElement>(".nav__links");
+
+  function setOpen(open: boolean) {
+    header?.classList.toggle("nav--open", open);
+    linksEl?.classList.toggle("nav__links--open", open);
+    toggle?.setAttribute("aria-expanded", String(open));
+    toggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  toggle?.addEventListener("click", () => {
+    setOpen(!header?.classList.contains("nav--open"));
+  });
+  linksEl?.addEventListener("click", (e) => {
+    if ((e.target as HTMLElement).closest("a")) setOpen(false);
+  });
+</script>

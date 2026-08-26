@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { NEWS_CATEGORIES } from "../data/site";
+
+const articles = (await getCollection("news")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Base
+  absoluteTitle="News & Insights | Harborview Law"
+  description="Legal updates and industry insights from Harborview Law — the latest trends in corporate law, real estate, commercial contracts, and telecommunications."
+>
+  <section class="page-hero pad-global">
+    <div class="container"><div class="page-hero__inner">
+      <span class="eyebrow">News and insights</span>
+      <h1 class="h1">Legal Updates and Industry Insights</h1>
+    </div></div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container">
+      <nav class="cat-filter" aria-label="Filter by category">
+        <a href="/news-and-insight" class="is-active">View all</a>
+        {
+          Object.entries(NEWS_CATEGORIES).map(([slug, name]) => (
+            <a href={`/news-category/${slug}`}>{name}</a>
+          ))
+        }
+      </nav>
+      <div class="article-grid">
+        {articles.map((a) => <ArticleCard slug={a.id} {...a.data} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

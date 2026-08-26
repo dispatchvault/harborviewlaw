@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { NEWS_CATEGORIES } from "../../data/site";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("news");
+  return articles.map((a) => ({ params: { slug: a.id }, props: { entry: a } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const catName = NEWS_CATEGORIES[d.category] ?? d.category;
+const dateStr = d.date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
+const related = (await getCollection("news"))
+  .filter((a) => a.data.category === d.category && a.id !== entry.id)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<Base title={d.title} description={d.description} ogImage={d.image}>
+  <article>
+    <div class="pad-global">
+      <header class="article-hero">
+        <a class="eyebrow" href={`/news-category/${d.category}`} style="text-decoration:none;">{catName}</a>
+        <h1 class="h1">{d.title}</h1>
+        <p class="article-hero__meta">Written by Harborview Law · Published on {dateStr}</p>
+      </header>
+      <figure class="article-figure">
+        <img src={d.image} alt="" width="1200" height="570" fetchpriority="high" />
+      </figure>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="section-sm pad-global scheme-grey">
+        <div class="container">
+          <h2 class="h3" style="margin-bottom: 2.5rem;">Related Articles</h2>
+          <div class="article-grid">
+            {related.map((a) => (
+              <ArticleCard slug={a.id} {...a.data} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaBand />
+</Base>

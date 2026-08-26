@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import ContactForm from "../components/ContactForm";
+---
+
+<Base
+  absoluteTitle="Free Legal Consultation | Harborview Law Newport Beach"
+  description="Get expert legal advice — schedule your free consultation with Harborview Law today."
+>
+  <section class="page-hero pad-global">
+    <div class="container"><div class="page-hero__inner">
+      <span class="eyebrow">Harborview Law consultation</span>
+      <h1 class="h1">Free Consultation</h1>
+      <p class="lede muted">Get expert legal advice — schedule your free consultation today.</p>
+    </div></div>
+  </section>
+
+  <section class="section pad-global scheme-cool">
+    <div class="container" style="max-width: 52rem;">
+      <div class="contact-form" style="border: 1px solid var(--border);">
+        <ContactForm withArea client:visible />
+      </div>
+    </div>
+  </section>
+</Base>

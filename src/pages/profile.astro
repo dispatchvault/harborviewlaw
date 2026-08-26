@@ -1,0 +1,71 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { ADDRESS_LINES } from "../data/site";
+---
+
+<Base
+  title="Jim Grass, Founder"
+  description="Jim Grass brings over 25 years of legal experience advising C-suite executives and business leaders — corporate law, real estate transactions, contract negotiation, and risk management."
+  ogImage="/images/JG-sitting.jpg"
+>
+  <section class="page-hero pad-global">
+    <div class="container"><div class="page-hero__inner">
+      <span class="eyebrow">Founder · General and Corporate Counsel</span>
+      <h1 class="h1">Jim Grass</h1>
+    </div></div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container split" style="align-items: start;">
+      <div>
+        <h2 class="h3" style="margin-bottom: 1rem;">Overview</h2>
+        <p class="text-regular muted" style="margin-bottom: 1.25rem;">
+          Jim Grass brings over 25 years of legal experience, advising C-suite executives and
+          business leaders in global public and private companies. Recognized for his strategic
+          insight, he specializes in corporate law, real estate transactions, contract
+          negotiation, and risk management, delivering legal solutions that mitigate risks and
+          drive growth.
+        </p>
+        <p class="text-regular muted" style="margin-bottom: 2.5rem;">
+          As Vice President of Corporate Counsel at Boldyn Networks (formerly Mobilitie), he
+          successfully led teams in executing mergers, acquisitions, and refinancing transactions
+          valued at over $600 million. His negotiation skills have fostered strategic deals with
+          corporations like Amazon and Google, along with significant legal cost reductions
+          through operational efficiency and litigation management.
+        </p>
+        <h2 class="h3" style="margin-bottom: 1rem;">Expertise</h2>
+        <p class="text-regular muted" style="margin-bottom: 1.25rem;">
+          Jim's expertise encompasses a broad range of corporate legal functions. He is highly
+          skilled in corporate transactions, including mergers, acquisitions, and financings,
+          ensuring smooth and compliant transitions for businesses. He has led high-stakes
+          negotiations with multinational corporations, securing strategic agreements and
+          fostering partnerships that drive growth.
+        </p>
+        <p class="text-regular muted" style="margin-bottom: 1.25rem;">
+          His experience extends to governance and leadership, where he contributes as a board
+          member for two nonprofit organizations. He has also played a pivotal role in developing
+          strategic partnerships across diverse industries, including IoT and craft brewing,
+          demonstrating his adaptability and innovative approach to complex legal challenges.
+        </p>
+        <p class="text-regular muted">
+          Jim holds a Juris Doctor from Whittier College School of Law and is admitted to the
+          California Bar. He is widely regarded as a trusted legal advisor who aligns legal
+          strategies with business objectives.
+        </p>
+      </div>
+      <div>
+        <div class="split__img" style="margin-bottom: 2rem;">
+          <img src="/images/JG-sitting.jpg" alt="Jim Grass" width="720" height="612" />
+        </div>
+        <ul class="plainlist">
+          <li>{ADDRESS_LINES.join(", ")}</li>
+          <li><a href="tel:+19497917764">(949) 791-7764</a></li>
+          <li><a href="mailto:jim@harborviewlaw.com">jim@harborviewlaw.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

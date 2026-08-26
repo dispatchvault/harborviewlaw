@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+export async function getStaticPaths() {
+  const practices = await getCollection("practiceAreas");
+  return practices.map((p) => ({ params: { slug: p.id }, props: { entry: p } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+
+const related = (await getCollection("news"))
+  .filter((a) => d.newsCategory && a.data.category === d.newsCategory)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<Base absoluteTitle={d.pageTitle} description={d.overview} ogImage={d.image}>
+  <section class="hero pad-global">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">Practice area</span>
+        <h1 class="h1">{d.title}</h1>
+        <p class="lede muted">{d.lede}</p>
+        <div class="btn-group">
+          <a href="/contact-us" class="btn">Get in touch</a>
+          <a href="/practice-areas" class="btn btn--secondary">View all services</a>
+        </div>
+      </div>
+      <div class="hero__art hero__art--photo">
+        <img src={d.image} alt={d.title} width="640" height="590" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global">
+    <div class="container">
+      <SectionHeader eyebrow="Services" lede={d.overview}>{d.heading}</SectionHeader>
+      <div class="card-grid card-grid--2">
+        {
+          d.services.map((s) => (
+            <div class="card">
+              <h3 class="card__title">{s.title}</h3>
+              <p class="card__body">{s.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section pad-global scheme-grey">
+    <div class="container">
+      <SectionHeader eyebrow="Client Testimonials" center
+        >See What Our Clients Say</SectionHeader
+      >
+      <Testimonials count={3} />
+    </div>
+  </section>
+
+  {
+    related.length > 0 && (
+      <section class="section pad-global">
+        <div class="container">
+          <SectionHeader eyebrow="News and insight">Related Articles</SectionHeader>
+          <div class="article-grid">
+            {related.map((a) => (
+              <ArticleCard slug={a.id} {...a.data} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaBand />
+</Base>

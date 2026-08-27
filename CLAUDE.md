@@ -23,9 +23,11 @@ the site is in the client's Webflow account, not Zinc's workspace). See
 - Fonts: Geologica + Open Sans via @fontsource-variable (self-hosted).
 - Tokens in `src/styles/global.css` `:root` — navy #011640, orange #ff4900,
   royal #2e34d2, linkwater #eef3fc. Orange filled uppercase buttons.
-- Contact endpoint (`src/pages/api/contact.ts`) wired for Resend; needs
-  `RESEND_API_KEY` + `CONTACT_TO` env vars in Netlify. Both forms (contact +
-  free-consultation with area select) post to it.
+- Forms use **Netlify Forms** (no server code, no env vars): plain HTML forms
+  named `contact` and `free-consultation` (with area-of-interest select),
+  honeypot spam filter, success page at `/thank-you`. Submissions appear in the
+  Netlify dashboard (Forms tab) and are emailed via a form notification
+  configured there. Site is fully static — no React, no API routes.
 
 ## Adding blog posts (the point of this migration)
 
@@ -48,13 +50,18 @@ Category pages, the index, related-article rails, and the sitemap update on buil
 - Brand is "Harborview Law" — no "u" — confirmed by the user.
 - Repo destination: `dispatchvault/harborviewlaw` (transfer from Zincsolutions
   pending user acceptance; Zincsolutions stays a Write collaborator per playbook).
-- Form sender: `forms@dispatchvault.com` (verified domain in the Zinc Resend
-  account) → delivers to `CONTACT_TO`.
+- Resend dropped (user decision — form volume is very rare): Netlify Forms
+  instead, submissions emailed to Jim Grass's personal email via a Netlify
+  form notification.
+- Netlify project: `harborview-law` (staging https://harborview-law.netlify.app,
+  site id 921a1c0c-e4a0-4da8-9172-c634e6405819); the name `harborviewlaw` was
+  taken globally on Netlify.
 
 ## Open items
 
 - User: accept GitHub repo transfer to dispatchvault; install Netlify GitHub App
-  on dispatchvault; import the repo as a Netlify project; enable branch deploys.
-- User: create Resend API key (sending_access, domain dispatchvault.com) and set
-  Netlify env vars `RESEND_API_KEY` + `CONTACT_TO=info@harborviewlaw.com`.
+  on dispatchvault; **link the repo to the existing `harborview-law` project**
+  (don't create a new one); enable branch deploys.
+- User: add the form-submission email notification in the Netlify UI
+  (Project configuration → Notifications) pointing at Jim's personal email.
 - Domain cutover last: update `PUBLIC_SITE_URL` + robots.txt sitemap URL then.

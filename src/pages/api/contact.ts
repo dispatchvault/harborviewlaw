@@ -4,8 +4,10 @@ export const prerender = false;
 
 // Sends the contact form via Resend (https://resend.com).
 // Requires two environment variables in Netlify:
-//   RESEND_API_KEY — API key from the Resend dashboard
+//   RESEND_API_KEY — key scoped to sending_access on dispatchvault.com
 //   CONTACT_TO     — destination inbox (defaults to info@harborviewlaw.com)
+// Sender is forms@dispatchvault.com (verified domain in the Zinc Resend
+// account); reply_to is the visitor, so replies go to the right person.
 // Until RESEND_API_KEY is set, submissions return 503 and the form shows
 // its error state with a direct-email fallback.
 
@@ -48,7 +50,7 @@ export const POST: APIRoute = async ({ request }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Harborview Law Website <onboarding@resend.dev>",
+      from: "Harborview Law Website <forms@dispatchvault.com>",
       to: [to],
       reply_to: email,
       subject: `Website inquiry from ${name}${area ? ` — ${area}` : ""}`,

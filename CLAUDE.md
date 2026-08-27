@@ -42,8 +42,19 @@ Category pages, the index, related-article rails, and the sitemap update on buil
 - Per-page meta title/description; live-site titles kept verbatim where clean.
 - Pin the framework in Netlify config from the first commit.
 
+## Confirmed decisions (Aug 26, 2026)
+
+- Phone is **949-791-7764** site-wide (971 on the old contact page was the typo).
+- Brand is "Harborview Law" — no "u" — confirmed by the user.
+- Repo destination: `dispatchvault/harborviewlaw` (transfer from Zincsolutions
+  pending user acceptance; Zincsolutions stays a Write collaborator per playbook).
+- Form sender: `forms@dispatchvault.com` (verified domain in the Zinc Resend
+  account) → delivers to `CONTACT_TO`.
+
 ## Open items
 
-- Netlify site connection (user does this in the Netlify UI, repo now has code).
-- Client decisions: phone typo (791 vs 971 — 791 assumed), form inbox, domain cutover.
-- Update `PUBLIC_SITE_URL` + robots.txt sitemap URL at domain cutover.
+- User: accept GitHub repo transfer to dispatchvault; install Netlify GitHub App
+  on dispatchvault; import the repo as a Netlify project; enable branch deploys.
+- User: create Resend API key (sending_access, domain dispatchvault.com) and set
+  Netlify env vars `RESEND_API_KEY` + `CONTACT_TO=info@harborviewlaw.com`.
+- Domain cutover last: update `PUBLIC_SITE_URL` + robots.txt sitemap URL then.

@@ -1,0 +1,82 @@
+---
+// Netlify Forms — no server code. Submissions land in the Netlify dashboard
+// (Forms tab) and are emailed via a form notification configured there.
+// The hidden bot-field is Netlify's honeypot spam filter.
+interface Props {
+  withArea?: boolean;
+}
+
+const { withArea = false } = Astro.props;
+const formName = withArea ? "free-consultation" : "contact";
+
+const AREAS = [
+  "General Counsel Services",
+  "Corporate Law",
+  "Commercial Contracts & Transactions",
+  "Real Estate Law",
+  "Telecommunications",
+  "Legal Consultation",
+];
+---
+
+<form
+  class="form-grid"
+  name={formName}
+  method="POST"
+  action="/thank-you"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+  <input type="hidden" name="form-name" value={formName} />
+  <p hidden>
+    <label>Don't fill this out: <input name="bot-field" /></label>
+  </p>
+  <div class="field">
+    <label for={`${formName}-name`}>Name</label>
+    <input id={`${formName}-name`} name="name" type="text" autocomplete="name" required />
+  </div>
+  <div class="field">
+    <label for={`${formName}-company`}>Company</label>
+    <input id={`${formName}-company`} name="company" type="text" autocomplete="organization" />
+  </div>
+  <div class="field">
+    <label for={`${formName}-phone`}>Phone</label>
+    <input id={`${formName}-phone`} name="phone" type="tel" autocomplete="tel" />
+  </div>
+  <div class="field">
+    <label for={`${formName}-email`}>Email</label>
+    <input id={`${formName}-email`} name="email" type="email" autocomplete="email" required />
+  </div>
+  {
+    withArea && (
+      <div class="field field--wide">
+        <label for={`${formName}-area`}>Select area of interest</label>
+        <select id={`${formName}-area`} name="area" required>
+          <option value="" disabled selected>
+            Select one...
+          </option>
+          {AREAS.map((a) => (
+            <option>{a}</option>
+          ))}
+        </select>
+      </div>
+    )
+  }
+  <div class="field field--wide">
+    <label for={`${formName}-message`}>Message</label>
+    <textarea
+      id={`${formName}-message`}
+      name="message"
+      placeholder="Tell us how we can help..."
+      required></textarea>
+  </div>
+  <div class="field field--wide field--check">
+    <input id={`${formName}-terms`} name="terms" type="checkbox" required />
+    <label for={`${formName}-terms`}>
+      I accept the <a href="/policy/terms-of-service">Terms</a>
+    </label>
+  </div>
+  <div class="field field--wide">
+    <button class="btn" type="submit">Submit</button>
+  </div>
+</form>

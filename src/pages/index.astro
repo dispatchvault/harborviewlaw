@@ -6,7 +6,7 @@ import Faq from "../components/Faq.astro";
 import Testimonials from "../components/Testimonials.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 import CtaBand from "../components/CtaBand.astro";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "../components/ContactForm.astro";
 import { FAQS, PHONE, PHONE_HREF, EMAIL, ADDRESS_LINES } from "../data/site";
 
 const practices = (await getCollection("practiceAreas")).sort(
@@ -164,7 +164,7 @@ const latest = (await getCollection("news"))
           Get in touch with us today to discuss how our legal expertise can support and protect
           your business.
         </p>
-        <ContactForm client:visible />
+        <ContactForm />
       </div>
     </div>
   </section>

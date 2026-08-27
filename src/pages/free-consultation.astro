@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <Base
@@ -18,7 +18,7 @@ import ContactForm from "../components/ContactForm";
   <section class="section pad-global scheme-cool">
     <div class="container" style="max-width: 52rem;">
       <div class="contact-form" style="border: 1px solid var(--border);">
-        <ContactForm withArea client:visible />
+        <ContactForm withArea />
       </div>
     </div>
   </section>

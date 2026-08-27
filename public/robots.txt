@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://harborviewlaw.netlify.app/sitemap-index.xml
+Sitemap: https://harborview-law.netlify.app/sitemap-index.xml

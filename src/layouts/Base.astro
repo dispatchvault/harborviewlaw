@@ -77,7 +77,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           var p = el.parentElement;
           var i = groupIndex.get(p) || 0;
           groupIndex.set(p, i + 1);
-          el.style.transitionDelay = Math.min(i * 90, 540) + "ms";
+          el.style.transitionDelay = Math.min(i * 110, 660) + "ms";
           el.addEventListener(
             "transitionend",
             function () {

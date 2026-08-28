@@ -38,10 +38,69 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:site_name" content="Harborview Law" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={ogImageUrl} />
+    <script is:inline>document.documentElement.classList.add("js-anim");</script>
   </head>
   <body>
     <Nav />
     <main><slot /></main>
     <Footer />
+    <script is:inline>
+      // Settled entrance animations: rise + fade on scroll into view, gentle
+      // sibling stagger. No-JS and reduced-motion users see content instantly
+      // (the hidden state is gated on html.js-anim + no-preference in CSS).
+      (function () {
+        var targets = document.querySelectorAll(
+          [
+            ".page-hero__inner > *",
+            ".hero__grid > div:first-child > *",
+            ".hero__art",
+            ".section-head",
+            ".card",
+            ".stat-card",
+            ".article-card",
+            ".testimonial",
+            ".split > *",
+            ".faq",
+            ".cat-filter",
+            ".cta-band__inner > *",
+            ".contact-grid > *",
+            ".article-hero > *",
+            ".article-figure",
+          ].join(",")
+        );
+        if (!targets.length || !("IntersectionObserver" in window)) {
+          document.documentElement.classList.remove("js-anim");
+          return;
+        }
+        var groupIndex = new Map();
+        targets.forEach(function (el) {
+          var p = el.parentElement;
+          var i = groupIndex.get(p) || 0;
+          groupIndex.set(p, i + 1);
+          el.style.transitionDelay = Math.min(i * 90, 540) + "ms";
+          el.addEventListener(
+            "transitionend",
+            function () {
+              el.style.transitionDelay = "";
+            },
+            { once: true }
+          );
+        });
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        targets.forEach(function (t) {
+          io.observe(t);
+        });
+      })();
+    </script>
   </body>
 </html>

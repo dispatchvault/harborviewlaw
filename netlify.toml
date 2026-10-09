@@ -1,5 +1,0 @@
-# Pin the build so Netlify never falls back to framework auto-detection
-# (a missing preset once shipped a "successful" deploy that served raw files).
-[build]
-  command = "npm run build"
-  publish = "dist"

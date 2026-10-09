@@ -1,0 +1,32 @@
+---
+// Serves the pixel-perfect mirror of www.harborviewlaw.com.
+// Each entry in src/raw/ is a complete captured document (assets rewritten
+// to self-hosted /wf/ paths); it is emitted verbatim so Webflow markup,
+// classes, data-w-id attributes, and IX2 animations survive untouched.
+import fs from "node:fs";
+import path from "node:path";
+
+// NOTE: getStaticPaths is compiled into an isolated scope — it cannot
+// reference frontmatter variables, so it resolves src/raw on its own.
+export async function getStaticPaths() {
+  const fs = await import("node:fs");
+  const path = await import("node:path");
+  const raw = path.resolve(process.cwd(), "src/raw");
+  const pages: string[] = JSON.parse(
+    fs.readFileSync(path.resolve(raw, "_pages.json"), "utf8")
+  );
+  return pages
+    .filter((p) => p !== "/__404__")
+    .map((p) => ({
+      params: { slug: p === "/" ? undefined : p.replace(/^\//, "") },
+    }));
+}
+
+const { slug } = Astro.params;
+const file = path.resolve(process.cwd(), "src/raw", (slug ?? "index") + ".html");
+let html = fs.readFileSync(file, "utf8");
+// Astro prepends its own doctype; drop the captured one to avoid doubling.
+html = html.replace(/^\s*<!DOCTYPE html>\s*/i, "");
+---
+
+<Fragment set:html={html} />

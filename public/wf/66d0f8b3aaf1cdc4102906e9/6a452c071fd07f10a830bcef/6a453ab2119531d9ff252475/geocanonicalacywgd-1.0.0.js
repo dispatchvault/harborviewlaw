@@ -1,0 +1,1 @@
+(function(){try{var l=document.querySelector('link[rel="canonical"]');if(!l){l=document.createElement('link');l.setAttribute('rel','canonical');document.head.appendChild(l);}l.setAttribute('href','https://harborviewlaw.com/practice-areas');}catch(e){}})();

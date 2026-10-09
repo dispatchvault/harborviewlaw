@@ -60,7 +60,9 @@ export default async function handler(req, res) {
   });
 
   if (!r.ok) {
-    return res.status(502).json({ ok: false, error: "Delivery failed" });
+    const detail = (await r.text().catch(() => "")).slice(0, 300);
+    console.error("Resend error", r.status, detail);
+    return res.status(502).json({ ok: false, error: "Delivery failed", status: r.status, detail });
   }
   return res.status(200).json({ ok: true });
 }

@@ -29,11 +29,21 @@ included — then fix things in follow-up passes.
 
 ## Hosting
 
-- **Vercel** (current target). Static output, zero-config; trailing-slash
-  directory format matches Webflow's extensionless URLs.
+- **LIVE on Vercel at https://www.harborviewlaw.com since Oct 12, 2026.**
+  Project `harborviewlaw` (prj_wUjxU3HYvfYEbtOezwJIYRLkJ0Hr), team
+  `jzaslaw-zincsolutions-projects`; www is the primary domain, apex 308s to
+  www. GoDaddy DNS: `@` A → 216.150.1.1 (Vercel per-project IP), `www`
+  CNAME → cname.vercel-dns.com. MX/TXT untouched (client email).
+- Forms: /api/contact (Vercel function) + /wf/forms-bridge.js → Resend
+  (from forms@dispatchvault.com) → jim@harborviewlaw.com. Env vars
+  RESEND_API_KEY + CONTACT_TO on the Vercel project.
+- Dispatch (dispatchvault.com) monitors this site: GitHub + Vercel webhooks,
+  weekly crawl. After cutover, set Dispatch "Production URL" to
+  https://www.harborviewlaw.com.
+- Webflow is out of the serving path but the subscription stays active until
+  its form/CMS data is exported — then cancel.
 - The old Netlify project (`harborviewlaw` in the Harborview-dedicated Netlify
-  account, harborviewlaw.netlify.app) is still linked to this repo and will
-  keep auto-building pushes until unlinked/deleted — superseded, ignore it.
+  account) still auto-builds pushes until deleted there — superseded, ignore.
 
 ## Known carried-over breakage (intentional — fix phase later)
 

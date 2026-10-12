@@ -1,0 +1,224 @@
+{
+  "redirects": [
+    {
+      "source": "/old-home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home/home-v1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home/home-v3",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about/about-v2",
+      "destination": "/about-v1",
+      "permanent": true
+    },
+    {
+      "source": "/about/about-v3",
+      "destination": "/about-v1",
+      "permanent": true
+    },
+    {
+      "source": "/contact/contact-v3",
+      "destination": "/contact-us",
+      "permanent": true
+    },
+    {
+      "source": "/components/footer-components",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/components/navbar-components",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/components/testimonial-slides-components",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/utility-pages/changelog",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/utility-pages/instructions",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/utility-pages/licenses",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/utility-pages/style-guide",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/starter-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/access-denied",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/401",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/log-in",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sign-up",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/reset-password",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/update-password",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/user-account",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/careers/corporate-senior-associate",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/careers/litigation-attorney",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team/benjamin-hayes",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team/ethan-carter",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team/grace-morgan",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team/matthew-collins",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team/olivia-mitchell",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team/rebecca-foster",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team/sophie-anderson",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team-category/commercial-contracts-transactions",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team-category/corporate-law",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team-category/employment-law",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team-category/general-and-coporate-counsel",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team-category/legal-consultation",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/our-team-category/real-estate-law",
+      "destination": "/our-team/jim-grass",
+      "permanent": true
+    },
+    {
+      "source": "/news-category/legal-consultation",
+      "destination": "/news-and-insight",
+      "permanent": true
+    },
+    {
+      "source": "/practice-area/ commercial-contracts-transactions",
+      "destination": "/practice-area/commercial-contracts-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/practice-area/ corporate-law",
+      "destination": "/practice-area/corporate-law",
+      "permanent": true
+    },
+    {
+      "source": "/practice-area/ general-counsel-services",
+      "destination": "/practice-area/general-counsel-services",
+      "permanent": true
+    },
+    {
+      "source": "/practice-area/ legal-consultation",
+      "destination": "/practice-area/legal-consultation",
+      "permanent": true
+    },
+    {
+      "source": "/practice-area/ real-estate-law",
+      "destination": "/practice-area/real-estate-law",
+      "permanent": true
+    },
+    {
+      "source": "/practice-area/ telecommunications",
+      "destination": "/practice-area/telecommunications",
+      "permanent": true
+    }
+  ]
+}

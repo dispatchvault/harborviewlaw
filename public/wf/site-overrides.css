@@ -55,3 +55,16 @@ div.faq-container {
   background-color: var(--orange);
   color: var(--white);
 }
+
+/* ---- Standalone FAQ wrapper (about + profile pages) -----------
+   FAQ blocks inserted outside an existing padded section get their
+   own bottom breathing room; top gap comes from .faq-container's
+   standard margin. */
+.faq-standalone {
+  padding-bottom: 7rem;
+}
+@media screen and (max-width: 767px) {
+  .faq-standalone {
+    padding-bottom: 4rem;
+  }
+}

@@ -12,9 +12,9 @@ Office: 23 Corporate Plaza Drive, Suite 150, Newport Beach, CA 92660
 
 ## Core Pages
 
-- [Home](https://www.harborviewlaw.com/): Outside general counsel in Newport Beach — services overview, FAQs, and contact
+- [Home](https://www.harborviewlaw.com/): Outside general counsel in Newport Beach, with services overview, FAQs, and contact
 - [About](https://www.harborviewlaw.com/about-v1): The firm's approach, values, and track record since 1998
-- [Jim Grass, Founder](https://www.harborviewlaw.com/our-team/jim-grass): Profile of the firm's founder — General and Corporate Counsel
+- [Jim Grass, Founder](https://www.harborviewlaw.com/our-team/jim-grass): Profile of the firm's founder and General and Corporate Counsel
 - [Concierge Legal Solutions](https://www.harborviewlaw.com/concierge-legal-solutions): Flexible, on-demand legal support model and its benefits
 - [Free Consultation](https://www.harborviewlaw.com/free-consultaion): Schedule a free legal consultation
 - [Contact](https://www.harborviewlaw.com/contact-us): Email, phone, and office details with a contact form

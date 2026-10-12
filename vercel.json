@@ -189,36 +189,6 @@
       "source": "/news-category/legal-consultation",
       "destination": "/news-and-insight",
       "permanent": true
-    },
-    {
-      "source": "/practice-area/ commercial-contracts-transactions",
-      "destination": "/practice-area/commercial-contracts-transactions",
-      "permanent": true
-    },
-    {
-      "source": "/practice-area/ corporate-law",
-      "destination": "/practice-area/corporate-law",
-      "permanent": true
-    },
-    {
-      "source": "/practice-area/ general-counsel-services",
-      "destination": "/practice-area/general-counsel-services",
-      "permanent": true
-    },
-    {
-      "source": "/practice-area/ legal-consultation",
-      "destination": "/practice-area/legal-consultation",
-      "permanent": true
-    },
-    {
-      "source": "/practice-area/ real-estate-law",
-      "destination": "/practice-area/real-estate-law",
-      "permanent": true
-    },
-    {
-      "source": "/practice-area/ telecommunications",
-      "destination": "/practice-area/telecommunications",
-      "permanent": true
     }
   ]
 }

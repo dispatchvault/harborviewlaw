@@ -1,0 +1,28 @@
+/* ============================================================
+   Harborview Law — site style-guide overrides
+   Loaded after the compiled Webflow stylesheet on every page.
+   Intentional divergences from the captured Webflow design live
+   here (never edit the compiled harborview-law.webflow.*.css).
+   ============================================================ */
+
+/* ---- Section rhythm -----------------------------------------
+   The template gives sections 8rem padding but pulls each next
+   section up by 72px, and some sections (news rails, follow-on
+   bands) use .padding-top-0 — collapsing those gaps to ~56px.
+   Give flush-top sections a proper top gap so the vertical
+   rhythm between ALL sections feels consistent and breathable. */
+.padding-section-large.padding-top-0 {
+  padding-top: 5rem;
+}
+
+@media screen and (max-width: 991px) {
+  .padding-section-large.padding-top-0 {
+    padding-top: 4rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .padding-section-large.padding-top-0 {
+    padding-top: 3rem;
+  }
+}

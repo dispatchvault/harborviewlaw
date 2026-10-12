@@ -5,24 +5,42 @@
    here (never edit the compiled harborview-law.webflow.*.css).
    ============================================================ */
 
-/* ---- Section rhythm -----------------------------------------
-   The template gives sections 8rem padding but pulls each next
-   section up by 72px, and some sections (news rails, follow-on
-   bands) use .padding-top-0 — collapsing those gaps to ~56px.
-   Give flush-top sections a proper top gap so the vertical
-   rhythm between ALL sections feels consistent and breathable. */
+/* ---- Section rhythm (the spacing standard) -------------------
+   Target: every adjacent pair of sections reads with the same
+   generous whitespace (~170-185px desktop, scaling down on
+   smaller screens), matching the template's natural seams.
+
+   Why these rules exist:
+   - The template pulls each section up 72px (negative margin)
+     and some sections use .padding-top-0 — those seams collapsed
+     to ~56px. Giving flush sections 7rem top padding restores
+     the standard seam (56px + 112px ≈ 168px).
+   - The homepage FAQ is a custom embed inside the news section
+     with only margin-top:60px of its own; 10rem brings that seam
+     to the same standard. (!important beats its inline <style>.) */
+
 .padding-section-large.padding-top-0 {
-  padding-top: 5rem;
+  padding-top: 7rem;
+}
+
+div.faq-container {
+  margin-top: 10rem !important;
 }
 
 @media screen and (max-width: 991px) {
   .padding-section-large.padding-top-0 {
-    padding-top: 4rem;
+    padding-top: 5rem;
+  }
+  div.faq-container {
+    margin-top: 7rem !important;
   }
 }
 
 @media screen and (max-width: 767px) {
   .padding-section-large.padding-top-0 {
-    padding-top: 3rem;
+    padding-top: 4rem;
+  }
+  div.faq-container {
+    margin-top: 5rem !important;
   }
 }

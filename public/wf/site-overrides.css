@@ -44,3 +44,14 @@ div.faq-container {
     margin-top: 5rem !important;
   }
 }
+
+/* ---- Form success state ---------------------------------------
+   Webflow's stock success banner is green (--success); the brand
+   interactive color is orange. Covers all success-message variants
+   (contact form + newsletter signup). */
+.success-message,
+.success-message-2,
+.success-message-3 {
+  background-color: var(--orange);
+  color: var(--white);
+}

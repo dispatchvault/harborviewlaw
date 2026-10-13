@@ -20,12 +20,32 @@ included — then fix things in follow-up passes.
   to the capture. NOTE: `getStaticPaths` is compiled into an isolated scope —
   it cannot see frontmatter variables; keep it self-contained.
 - `src/pages/404.astro` — serves the captured 404 page.
-- `public/wf/` — 455 self-hosted assets (compiled Webflow CSS, webflow.js
-  chunks, jQuery, images incl. srcset variants, fonts, injected scripts).
-- Webflow IX2 animations work because markup (`data-w-id`, `data-wf-page`,
-  `data-wf-site`) and webflow.js are carried verbatim.
-- The mirror script lives in the session scratchpad (`mirror2.py`); re-running
-  it re-captures the live site (remember the SRI-strip step afterwards).
+- `public/wf/` — self-hosted assets (compiled Webflow CSS, images incl.
+  srcset variants, fonts, site scripts).
+- **Interactions are native since Phase 5 (Oct 13, 2026): jQuery and the
+  webflow.js chunks are gone** (2.4MB → ~39KB authored JS). The original IX2
+  interaction config was extracted from the Webflow bundle into
+  `scripts/ix2-config.cjs`; `scripts/build-native.mjs` compiles it (filtered
+  to the data-w-id values actually present in src/raw + src/templates) and
+  prepends it to `src/native/runtime.js`, producing the committed
+  `public/wf/native.js`. Re-run `node scripts/build-native.mjs` after editing
+  runtime.js or adding/removing `data-w-id` markup. The runtime plays scroll
+  reveals (IntersectionObserver), hovers, and the hamburger morph with the
+  original timings; it also implements the navbar collapse and the
+  testimonial sliders natively. Lottie graphics use self-hosted
+  `/wf/js/lottie_light.min.js` (lottie-web 5.12.2), lazy-injected only on
+  pages with Lottie elements. The captured inline `opacity:0`/transform
+  styles on `[data-w-id]` elements are still the animation initial states —
+  don't strip them.
+- A strict Content-Security-Policy ships in vercel.json (script-src 'self' +
+  one hashed inline snippet + googletagmanager; frame-src only the Google
+  Maps embed; font-src allows data: for the icon font in the compiled CSS).
+  If you add an inline script or a third-party resource, update the CSP.
+- Slugs renamed with permanent redirects (Oct 13, 2026): `/about-v1` →
+  `/about`, `/free-consultaion` → `/free-consultation`.
+- The mirror script lives in the session scratchpad (`mirror2.py`); it
+  captured the ORIGINAL Webflow site. Re-running it now would capture this
+  build; it's effectively retired.
 
 ## Hosting
 
@@ -62,16 +82,12 @@ build-time endpoints (src/pages/*.ts), no longer static files.
 ## Known carried-over breakage (intentional — fix phase later)
 
 See git history (`MIGRATION-AUDIT.md` in the v1 tree) for the full list from
-August. Highlights still live on the site and therefore in this mirror:
-template-polluted/doubled SEO titles, lorem-ipsum team bios + careers pages,
-space-prefixed footer practice-area links (Webflow serves them; mirrored as
-pages so they resolve here too), one dead Webflow plugin placeholder SVG (403s
-on the live site as well), phone typo 971 vs 791 on the contact page.
-- **Forms still POST to Webflow's API** (`webflow.com/api/.../form/...`) —
-  they work while the client's Webflow subscription is active and must be
-  replaced before Webflow is cancelled.
-- Cookiebot is domain-keyed; the consent banner may behave differently off
-  the production domain.
+August. Most items have since been fixed in the Phase 0-5 passes (forms off
+Webflow's API, self-hosted consent, slug typos, doubled SEO titles, the
+profile page's placeholder Google link, 404 title). Still deliberate:
+lorem-ipsum team bios, the brand-orange button contrast (axe flags it;
+design decision), captured heading-order quirks, and the generic
+"READ MORE" link text (Lighthouse link-text; copy decision).
 
 ## House facts
 

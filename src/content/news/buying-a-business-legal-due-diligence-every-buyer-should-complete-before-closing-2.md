@@ -1,6 +1,6 @@
 ---
 title: "Buying a Business? Legal Due Diligence Every Buyer Should Complete Before Closing"
-seoTitle: "Buying a Business? Legal Due Diligence Every Buyer Should Complete Before ClosingBuying a Business? Legal Due Diligence Before Closing | Harborview Law | Harborview LawLearn what legal due diligence every buyer should complete before purchasing a business, including contracts, leases, employment issues, and hidden liabilities."
+seoTitle: "Buying a Business? Legal Due Diligence Before Closing | Harborview Law"
 description: "Before buying a business, understand the legal issues that can affect value, delay closing, or create unexpected liability after the deal is complete."
 date: 2026-07-20
 category: "commercial-contracts-and-transactions"

@@ -46,6 +46,7 @@ export function dateDisplay(d: Date): string {
 export function fillCard(tpl: string, p: Post): string {
   return tpl
     .replaceAll("{{URL}}", `/news/${p.id}`)
+    .replaceAll("{{CAT_URL}}", `/news-category/${p.data.category}`)
     .replaceAll("{{TITLE}}", escText(p.data.title))
     .replaceAll("{{TITLE_ATTR}}", escAttr(p.data.title))
     .replaceAll("{{IMG}}", p.data.image)

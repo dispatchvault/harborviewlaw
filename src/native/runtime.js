@@ -387,7 +387,9 @@
         slides.forEach(function (_, i) {
           var d = document.createElement("div");
           d.className = "w-slider-dot" + (i === 0 ? " w-active" : "");
-          d.style.margin = "0 " + spacing + "px 0.5em";
+          // CSS gives dots 8px padding (clipped from the painted box) so the
+          // 8px dots get non-overlapping 24px touch targets (WCAG 2.5.8).
+          d.style.margin = "0 " + Math.max(parseInt(spacing, 10) - 8, 0) + "px 0.5em";
           d.setAttribute("role", "button");
           d.setAttribute("tabindex", "0");
           d.setAttribute("aria-label", "Show slide " + (i + 1) + " of " + slides.length);

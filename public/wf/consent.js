@@ -52,8 +52,8 @@
       '#hvl-consent a{color:#011640;text-decoration:underline}' +
       '#hvl-consent .hvl-row{display:flex;gap:.5rem;flex-wrap:wrap}' +
       '#hvl-consent button{font:inherit;font-weight:600;border-radius:4px;padding:.55rem .95rem;cursor:pointer}' +
-      '#hvl-consent .hvl-accept{background:#ff4900;border:1px solid #ff4900;color:#fff}' +
-      '#hvl-consent .hvl-accept:hover{background:#e03e00}' +
+      '#hvl-consent .hvl-accept{background:#d93e00;border:1px solid #d93e00;color:#fff}' +
+      '#hvl-consent .hvl-accept:hover{background:#c23700}' +
       '#hvl-consent .hvl-essential{background:transparent;border:1px solid rgba(1,22,64,.35);color:#011640}' +
       '#hvl-consent button:focus-visible{outline:2px solid #ff4900;outline-offset:2px}' +
       '</style>' +

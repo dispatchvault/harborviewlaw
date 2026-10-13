@@ -27,7 +27,14 @@ const d = post.data;
 
 const url = `${BASE}/news/${post.id}`;
 const catName = CATEGORY_NAMES[d.category];
-const bodyHtml = await marked.parse(post.body ?? "");
+// Promote body headings one level (markdown uses ###/####, which would skip
+// h2 after the page h1); the article-h* classes in site-overrides.css pin the
+// original h3/h4 rendering so the pages look unchanged.
+const bodyHtml = (await marked.parse(post.body ?? ""))
+  .replaceAll("<h3>", '<h2 class="article-h3">')
+  .replaceAll("</h3>", "</h2>")
+  .replaceAll("<h4>", '<h3 class="article-h4">')
+  .replaceAll("</h4>", "</h3>");
 const seoTitle = d.seoTitle ?? `${d.title} | Harborview Law`;
 const ogImg = BASE + (d.ogImage ?? d.image);
 
@@ -74,6 +81,8 @@ const related = posts.filter((p) => p.id !== post.id).slice(0, 3);
 
 let html = template("article-shell.html")
   .replaceAll("{{SLUG}}", post.id)
+  .replaceAll("{{SHARE_URL}}", encodeURIComponent(url))
+  .replaceAll("{{SHARE_PLAIN}}", url)
   .replace("{{TITLE_TAG}}", `<title>${escText(seoTitle)}</title>`)
   .replace("{{HEAD_EXTRAS}}", headExtras)
   .replace("{{CATEGORY_URL}}", `/news-category/${d.category}`)

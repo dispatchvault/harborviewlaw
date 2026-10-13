@@ -68,3 +68,112 @@ div.faq-container {
     padding-bottom: 4rem;
   }
 }
+
+/* ---- Accessibility pass (Phase 5) ------------------------------
+   Screen-reader-only text for descriptive link labels. */
+.u-sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* White-on-orange CTAs darkened to the nearest WCAG AA orange
+   (#d93e00, 4.53:1 with white; brand #ff4900 is 3.38:1). Orange
+   text on navy already passes, so navy sections keep the brand
+   orange for outlined/hover text. */
+.button,
+.button-3 {
+  background-color: #d93e00;
+  border-color: #d93e00;
+}
+.button:hover {
+  background-color: transparent;
+  color: #d93e00;
+  border-color: #d93e00;
+}
+.button.outlined {
+  background-color: transparent;
+  color: #d93e00;
+  border-color: #d93e00;
+  -webkit-text-stroke-color: #d93e00;
+}
+.background-color-navy .button:hover,
+.background-color-navy .button.outlined {
+  color: var(--orange);
+  border-color: var(--orange);
+  -webkit-text-stroke-color: var(--orange);
+}
+.background-color-navy .button.outlined:hover {
+  border-color: var(--white);
+  background-color: var(--white);
+  color: var(--navy-blue);
+}
+.success-message,
+.success-message-2,
+.success-message-3 {
+  background-color: #d93e00;
+}
+
+/* In-text links get an underline so color is not the only cue. */
+p a:not(.button):not(.w-button) {
+  text-decoration: underline;
+}
+
+/* Slider dots: 16px visible square, 24px touch target (padding is
+   clipped out of the painted background; runtime compensates the
+   dot margin so visual spacing is unchanged). */
+.w-slider-dot {
+  box-sizing: content-box;
+  padding: 8px;
+  background-clip: content-box;
+}
+
+/* Footer contact links: 24px touch target without layout shift. */
+.footer-details-wrapper a.footer-link {
+  display: inline-block;
+  padding: 4px 0;
+  margin: -4px 0;
+}
+
+/* Article body subheads: markdown ###/#### are emitted as h2/h3 for
+   a correct outline; these pin the original h3/h4 element rendering. */
+.article-h3 {
+  font-size: 2.25rem;
+  line-height: 1.3;
+}
+.article-h4 {
+  font-size: 1.75rem;
+  line-height: 1.3;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 991px) {
+  .article-h3 { font-size: 1.875rem; }
+  .article-h4 { font-size: 1.625rem; line-height: 1.4; }
+}
+@media screen and (max-width: 767px) {
+  .article-h3 { font-size: 1.75rem; }
+  .article-h4 { font-size: 1.5rem; line-height: 1.4; }
+}
+
+/* Contact page office tab heading: h3 for the outline, bare-h5 look. */
+.u-h5 {
+  color: var(--navy-blue);
+  margin: 0;
+  font-family: Geologica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+@media screen and (max-width: 991px) {
+  .u-h5 { font-size: 1.375rem; line-height: 1.4; }
+}
+@media screen and (max-width: 767px) {
+  .u-h5 { font-size: 1.25rem; line-height: 1.4; }
+}

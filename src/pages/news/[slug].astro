@@ -1,0 +1,92 @@
+---
+// Article pages, generated from src/content/news/*.md through the captured
+// Webflow article shell — markup identical to the original mirror pages.
+import { marked } from "marked";
+import {
+  allPosts,
+  template,
+  fillCard,
+  escText,
+  escAttr,
+  dateDisplay,
+  stampYear,
+  CATEGORY_NAMES,
+  BASE,
+} from "../../lib/news";
+
+export async function getStaticPaths() {
+  const { allPosts } = await import("../../lib/news");
+  const posts = await allPosts();
+  return posts.map((p) => ({ params: { slug: p.id }, props: { id: p.id } }));
+}
+
+const { id } = Astro.props;
+const posts = await allPosts();
+const post = posts.find((p) => p.id === id)!;
+const d = post.data;
+
+const url = `${BASE}/news/${post.id}`;
+const catName = CATEGORY_NAMES[d.category];
+const bodyHtml = await marked.parse(post.body ?? "");
+const seoTitle = d.seoTitle ?? `${d.title} | Harborview Law`;
+const ogImg = BASE + (d.ogImage ?? d.image);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": url + "#article",
+  mainEntityOfPage: url,
+  headline: d.title.slice(0, 110),
+  datePublished: d.date.toISOString().slice(0, 10),
+  dateModified: d.date.toISOString().slice(0, 10),
+  author: { "@type": "Organization", name: "Harborview Law", url: BASE + "/" },
+  publisher: { "@id": BASE + "/#firm" },
+  inLanguage: "en-US",
+  image: [ogImg],
+  articleSection: catName,
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE + "/" },
+    { "@type": "ListItem", position: 2, name: "News & Insights", item: BASE + "/news-and-insight" },
+    { "@type": "ListItem", position: 3, name: d.title, item: url },
+  ],
+};
+
+const headExtras = [
+  `<link rel="canonical" href="${url}"/>`,
+  `<meta name="description" content="${escAttr(d.description)}"/>`,
+  `<meta property="og:title" content="${escAttr(seoTitle)}"/>`,
+  `<meta property="og:description" content="${escAttr(d.description)}"/>`,
+  `<meta property="og:type" content="article"/>`,
+  `<meta property="og:url" content="${url}"/>`,
+  `<meta property="og:image" content="${ogImg}"/>`,
+  `<meta name="twitter:card" content="summary_large_image"/>`,
+  `<meta name="twitter:title" content="${escAttr(seoTitle)}"/>`,
+  `<script type="application/ld+json">${JSON.stringify(articleSchema)}</script>`,
+  `<script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>`,
+].join("");
+
+const relatedTpl = template("related-card.html");
+const related = posts.filter((p) => p.id !== post.id).slice(0, 3);
+
+let html = template("article-shell.html")
+  .replaceAll("{{SLUG}}", post.id)
+  .replace("{{TITLE_TAG}}", `<title>${escText(seoTitle)}</title>`)
+  .replace("{{HEAD_EXTRAS}}", headExtras)
+  .replace("{{CATEGORY_URL}}", `/news-category/${d.category}`)
+  .replace("{{CATEGORY}}", escText(catName))
+  .replace("{{READTIME}}", escText(d.readTime))
+  .replace("{{H1}}", escText(d.title))
+  .replace("{{H1_ATTR}}", escAttr(d.title))
+  .replace("{{DATE_DISPLAY}}", dateDisplay(d.date))
+  .replace("{{HERO}}", d.image)
+  .replace("{{BODY}}", bodyHtml)
+  .replace("{{RELATED_CARDS}}", related.map((p) => fillCard(relatedTpl, p)).join(""));
+html = stampYear(html);
+html = html.replace(/^\s*<!DOCTYPE html>\s*/i, "");
+---
+
+<Fragment set:html={html} />

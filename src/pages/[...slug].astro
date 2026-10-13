@@ -3,8 +3,11 @@
 // Each entry in src/raw/ is a complete captured document (assets rewritten
 // to self-hosted /wf/ paths); it is emitted verbatim so Webflow markup,
 // classes, data-w-id attributes, and IX2 animations survive untouched.
+// Pages carrying {{RAIL:...}} markers get their news cards generated from
+// the markdown collection, and the footer year is stamped at build time.
 import fs from "node:fs";
 import path from "node:path";
+import { allPosts, fillRails, stampYear } from "../lib/news";
 
 // NOTE: getStaticPaths is compiled into an isolated scope — it cannot
 // reference frontmatter variables, so it resolves src/raw on its own.
@@ -25,6 +28,10 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const file = path.resolve(process.cwd(), "src/raw", (slug ?? "index") + ".html");
 let html = fs.readFileSync(file, "utf8");
+if (html.includes("{{RAIL:")) {
+  html = fillRails(html, await allPosts());
+}
+html = stampYear(html);
 // Astro prepends its own doctype; drop the captured one to avoid doubling.
 html = html.replace(/^\s*<!DOCTYPE html>\s*/i, "");
 ---

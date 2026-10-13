@@ -45,6 +45,20 @@ included — then fix things in follow-up passes.
 - The old Netlify project (`harborviewlaw` in the Harborview-dedicated Netlify
   account) still auto-builds pushes until deleted there — superseded, ignore.
 
+## Publishing a blog post (Phase 4 workflow)
+
+Add one markdown file to `src/content/news/` and push. Frontmatter:
+`title`, `description`, `date` (YYYY-MM-DD), `category` (one of the five
+slugs in src/content.config.ts), `readTime` ("4 min"), `image` (/wf/... path),
+optional `summary` (card text), `seoTitle`, `ogImage`. The build generates:
+the article page (through src/templates/article-shell.html, markup identical
+to the captured Webflow pages), cards on the home rail, news index, its
+category page, practice-page rails and article related-rails, plus
+sitemap.xml and llms.txt entries. Footer year is stamped at build time.
+Templates live in src/templates/ ({{TOKEN}} substitution; cards extracted
+from the original Webflow dynamic lists). sitemap.xml and llms.txt are
+build-time endpoints (src/pages/*.ts), no longer static files.
+
 ## Known carried-over breakage (intentional — fix phase later)
 
 See git history (`MIGRATION-AUDIT.md` in the v1 tree) for the full list from

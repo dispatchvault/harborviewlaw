@@ -84,9 +84,11 @@ build-time endpoints (src/pages/*.ts), no longer static files.
 See git history (`MIGRATION-AUDIT.md` in the v1 tree) for the full list from
 August. Nearly everything has since been fixed in the Phase 0-5 passes
 (forms off Webflow's API, self-hosted consent, slug typos, doubled SEO
-titles, dead card/share links, heading outline, button contrast: CTAs
-render #d93e00 via site-overrides.css so white text passes AA while navy
-sections keep brand #ff4900). Lighthouse: accessibility 100, SEO 100.
+titles, dead card/share links, heading outline). Lighthouse: SEO 100;
+accessibility ~89 by deliberate choice: the user reviewed the AA-compliant
+darker CTA orange (#d93e00) and rejected it as muddy, so buttons keep brand
+#ff4900 (3.38:1 with white; fails the color-contrast audit). Do not darken
+the brand orange again without asking.
 Still open: lorem-ipsum team bios (copy), and the homepage headshot PNG is
 a 400px source upscaled to ~500px (flagged by best-practices; needs a
 higher-res asset from the client).

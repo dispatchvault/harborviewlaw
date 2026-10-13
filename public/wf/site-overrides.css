@@ -83,43 +83,6 @@ div.faq-container {
   border: 0;
 }
 
-/* White-on-orange CTAs darkened to the nearest WCAG AA orange
-   (#d93e00, 4.53:1 with white; brand #ff4900 is 3.38:1). Orange
-   text on navy already passes, so navy sections keep the brand
-   orange for outlined/hover text. */
-.button,
-.button-3 {
-  background-color: #d93e00;
-  border-color: #d93e00;
-}
-.button:hover {
-  background-color: transparent;
-  color: #d93e00;
-  border-color: #d93e00;
-}
-.button.outlined {
-  background-color: transparent;
-  color: #d93e00;
-  border-color: #d93e00;
-  -webkit-text-stroke-color: #d93e00;
-}
-.background-color-navy .button:hover,
-.background-color-navy .button.outlined {
-  color: var(--orange);
-  border-color: var(--orange);
-  -webkit-text-stroke-color: var(--orange);
-}
-.background-color-navy .button.outlined:hover {
-  border-color: var(--white);
-  background-color: var(--white);
-  color: var(--navy-blue);
-}
-.success-message,
-.success-message-2,
-.success-message-3 {
-  background-color: #d93e00;
-}
-
 /* In-text links get an underline so color is not the only cue. */
 p a:not(.button):not(.w-button) {
   text-decoration: underline;

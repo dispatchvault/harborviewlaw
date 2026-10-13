@@ -13,7 +13,7 @@ summary: "Mergers and acquisitions (M&A) can be transformative opportunities for
 
 Mergers and acquisitions (M&A) can be transformative opportunities for businesses, offering avenues for growth, diversification, or increased market share. However, these complex transactions also come with significant legal and operational risks. For businesses pursuing M&A, understanding the legal considerations is critical to ensuring a successful outcome.
 
-![](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
+![Audience members taking notes on notepads during a seminar](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
 
 One of the most important steps in any M&A transaction is thorough due diligence. This process involves evaluating the financial, operational, and legal health of the target company. Legal due diligence, in particular, focuses on reviewing contracts, intellectual property rights, regulatory compliance, and pending or potential litigation. Identifying risks early allows parties to negotiate favorable terms or implement safeguards to mitigate issues.
 

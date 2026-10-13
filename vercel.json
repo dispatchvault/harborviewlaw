@@ -17,12 +17,12 @@
     },
     {
       "source": "/about/about-v2",
-      "destination": "/about-v1",
+      "destination": "/about",
       "permanent": true
     },
     {
       "source": "/about/about-v3",
-      "destination": "/about-v1",
+      "destination": "/about",
       "permanent": true
     },
     {
@@ -188,6 +188,16 @@
     {
       "source": "/news-category/legal-consultation",
       "destination": "/news-and-insight",
+      "permanent": true
+    },
+    {
+      "source": "/about-v1",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/free-consultaion",
+      "destination": "/free-consultation",
       "permanent": true
     }
   ],

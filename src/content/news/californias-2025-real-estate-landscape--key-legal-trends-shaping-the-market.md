@@ -13,7 +13,7 @@ summary: "As 2025 begins, California’s real estate market continues to adapt t
 
 As 2025 begins, California’s real estate market continues to adapt to shifting economic conditions, environmental imperatives, and evolving legislative priorities. Property owners, developers, and investors face a rapidly changing legal environment, requiring vigilance and adaptability to thrive in one of the nation’s most dynamic real estate markets.
 
-![](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
+![Audience members taking notes on notepads during a seminar](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
 
 The state’s housing crisis remains a central focus for lawmakers, with new reforms aimed at increasing affordable housing development. Senate Bill 4,signed into law last year, expands opportunities for multi-family housing near transit hubs and within commercial zones previously restricted to non-residential use. Developers are now navigating these zoning relaxations, which bring new opportunities but also necessitate compliance with updated local planning requirements.
 

@@ -13,7 +13,7 @@ summary: "For property owners, leasing land or rooftop space for wireless infras
 
 For property owners, leasing land or rooftop space for wireless infrastructure, such as cell towers or antennas, can be a lucrative opportunity. These arrangements promise steady, long-term income with minimal effort. However, such agreements are rarely straightforward and involve legal complexities that, if overlooked, could have lasting consequences. From ensuring fair compensation to addressing liability concerns, property owners must carefully evaluate every aspect of the deal to protect their interests.
 
-![](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
+![Audience members taking notes on notepads during a seminar](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
 
 **Balancing Property Use and Long-Term Value**
 

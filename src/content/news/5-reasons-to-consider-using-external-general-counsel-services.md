@@ -15,7 +15,7 @@ In today’s fast-paced business world, navigating legal challenges efficiently 
 
 These services allow businesses to access experienced legal counsel on a flexible, as-needed basis. By bridging the gap between project-based legal support and the costs of in-house teams, fractional general counsel provides tailored solutions to meet your specific needs without the overhead. Here are five compelling reasons to consider this approach for your business.
 
-![](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
+![Audience members taking notes on notepads during a seminar](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
 
 **1. Cost Savings Without Sacrificing Expertise**
 

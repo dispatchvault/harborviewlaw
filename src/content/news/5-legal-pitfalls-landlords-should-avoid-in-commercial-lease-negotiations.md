@@ -13,7 +13,7 @@ summary: "For landlords and property managers, commercial lease agreements are c
 
 For landlords and property managers, commercial lease agreements are critical tools for maintaining control over the property and ensuring stable income. However, certain legal oversights during the negotiation process can expose landlords to unnecessary liability, reduce enforceability, or limit the long-term profitability of the asset. Below are five key legal pitfalls that landlords should avoid when negotiating commercial leases.
 
-![](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
+![Audience members taking notes on notepads during a seminar](/wf/66d0f8b4aaf1cdc410290754/675b2e877424c0700267cf94_66d0f8b4aaf1cdc410290920_news_20internal_20img-min.jpeg)
 
 **1. Insufficient Definition ofOperating Expenses**
 Vague or poorly drafted expense provisions can lead to disputes over whattenants are required to pay. A comprehensive lease should explicitly define allcategories of operating expenses, including property taxes, insurance,maintenance, and management fees. It should also specify how these expenseswill be allocated among tenants and how annual reconciliations will beconducted. Including expense caps, where necessary, should be limited andnegotiated carefully to preserve the landlord’s ability to recover rising costs.

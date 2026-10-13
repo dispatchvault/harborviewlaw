@@ -82,12 +82,14 @@ build-time endpoints (src/pages/*.ts), no longer static files.
 ## Known carried-over breakage (intentional — fix phase later)
 
 See git history (`MIGRATION-AUDIT.md` in the v1 tree) for the full list from
-August. Most items have since been fixed in the Phase 0-5 passes (forms off
-Webflow's API, self-hosted consent, slug typos, doubled SEO titles, the
-profile page's placeholder Google link, 404 title). Still deliberate:
-lorem-ipsum team bios, the brand-orange button contrast (axe flags it;
-design decision), captured heading-order quirks, and the generic
-"READ MORE" link text (Lighthouse link-text; copy decision).
+August. Nearly everything has since been fixed in the Phase 0-5 passes
+(forms off Webflow's API, self-hosted consent, slug typos, doubled SEO
+titles, dead card/share links, heading outline, button contrast: CTAs
+render #d93e00 via site-overrides.css so white text passes AA while navy
+sections keep brand #ff4900). Lighthouse: accessibility 100, SEO 100.
+Still open: lorem-ipsum team bios (copy), and the homepage headshot PNG is
+a 400px source upscaled to ~500px (flagged by best-practices; needs a
+higher-res asset from the client).
 
 ## House facts
 

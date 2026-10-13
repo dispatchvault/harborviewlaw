@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://harborviewlaw.com/sitemap.xml
+Sitemap: https://www.harborviewlaw.com/sitemap.xml
 
 User-agent: GPTBot
 Allow: /

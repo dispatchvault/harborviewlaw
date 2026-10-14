@@ -196,3 +196,34 @@ p a:not(.button):not(.w-button) {
 @media (prefers-reduced-motion: reduce) {
   .w-nav-overlay .navbar-menu[data-nav-menu-open] { animation: none; }
 }
+
+/* ---- Mobile UX pass (Oct 2026) ---------------------------------
+   1. Images: the layout-shift width/height attributes stretch any
+      image whose CSS constrains only one axis (profile headshot,
+      footer logo). Element-level height:auto restores the natural
+      aspect while class-based explicit sizing still wins, and the
+      attributes keep reserving space via the derived aspect-ratio. */
+img:where([width][height]) {
+  height: auto;
+}
+
+/* 2. Section rhythm on phones: the template pulls every section up
+      72px, tuned for 8rem desktop paddings. At the 4rem phone
+      paddings that collapses seams to 56px and overlaps flush
+      sections. Softening the pull to 2rem gives every seam a
+      uniform ~96px, matching the flush-top compensation above. */
+@media screen and (max-width: 767px) {
+  .padding-section-large {
+    margin-bottom: -2rem;
+  }
+  .faq-answer {
+    padding-right: 24px;
+  }
+}
+
+/* The footer wordmark SVG letterboxes itself inside its captured
+   300x100 box (preserveAspectRatio), and the footer layout expects
+   that box height, so it is exempt from the height:auto fix. */
+.footer-logo-link img {
+  height: 100px;
+}

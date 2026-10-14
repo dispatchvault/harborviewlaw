@@ -140,3 +140,59 @@ p a:not(.button):not(.w-button) {
 @media screen and (max-width: 767px) {
   .u-h5 { font-size: 1.25rem; line-height: 1.4; }
 }
+
+/* ---- Mobile navigation rebuild (Phase 5 follow-up) -------------
+   The purchased template never finished its collapsed menu: links
+   flowed inline with mismatched padding. Below 992px the open menu
+   becomes a clean panel: stacked left-aligned links with divider
+   rows and 48px tap targets, and a full-width consultation button.
+   Desktop navigation is untouched. */
+@media screen and (max-width: 991px) {
+  .w-nav-overlay {
+    box-shadow: 0 28px 44px -28px rgba(1, 22, 64, 0.35);
+  }
+  .w-nav-overlay .navbar-menu[data-nav-menu-open] {
+    background: #fff;
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    display: block;
+    margin: 0;
+    padding: 6px 20px 24px;
+    text-align: left;
+    animation: hvl-menu-in 0.22s ease;
+  }
+  .w-nav-overlay .navbar-menu[data-nav-menu-open] > a {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 14px 0;
+    font-family: Geologica, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--navy-blue);
+    text-align: left;
+    border-bottom: 1px solid rgba(1, 22, 64, 0.08);
+  }
+  .w-nav-overlay .navbar-menu[data-nav-menu-open] > a:hover {
+    color: var(--orange);
+  }
+  .w-nav-overlay .navbar-menu[data-nav-menu-open] > a.w-button {
+    display: block;
+    margin: 20px 0 0;
+    padding: 14px 24px;
+    text-align: center;
+    background-color: var(--orange);
+    color: #fff;
+    border-bottom: none;
+  }
+}
+@keyframes hvl-menu-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .w-nav-overlay .navbar-menu[data-nav-menu-open] { animation: none; }
+}

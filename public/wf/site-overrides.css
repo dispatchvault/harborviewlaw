@@ -227,3 +227,11 @@ img:where([width][height]) {
 .footer-logo-link img {
   height: 100px;
 }
+
+/* About page feature cards: the centered card wrapper is overridden
+   by heading-style-h5's own text-align:left and -16px right margin
+   (a template quirk); the headings join the centered layout. */
+.about-header-item-wrapper .heading-style-h5 {
+  text-align: center;
+  margin-right: 0;
+}

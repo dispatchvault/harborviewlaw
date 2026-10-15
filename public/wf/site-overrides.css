@@ -239,7 +239,7 @@ img:where([width][height]) {
 /* Telecom tower icon on the practice-areas page: the -smaller icon
    class renders the tower a touch under its neighbors' visual
    weight; it gets a slight bump (4rem -> 4.5rem, telecom card only). */
-.lottie-timed-animation-smaller[data-src$="telecom-tower.json"] {
+.lottie-timed-animation-smaller[data-src$="telecom-tower-2.json"] {
   width: 4.5rem;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;

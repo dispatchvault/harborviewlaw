@@ -235,3 +235,12 @@ img:where([width][height]) {
   text-align: center;
   margin-right: 0;
 }
+
+/* Telecom tower icon on the practice-areas page: the -smaller icon
+   class renders the tower a touch under its neighbors' visual
+   weight; it gets a slight bump (4rem -> 4.5rem, telecom card only). */
+.lottie-timed-animation-smaller[data-src$="telecom-tower.json"] {
+  width: 4.5rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
